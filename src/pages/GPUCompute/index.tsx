@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import GpuSelectionComponent from './GpuSelectionComponent';
-import CpuSelectionComponent from './CpuSelectionComponent';
+// import CpuSelectionComponent from './CpuSelectionComponent';
 import ConfigureDeployment from './ConfigureDeployment';
 import AddVolume from './Addvolume'; // Import AddVolume component
 import './FilterGpusbyVram.css';
-import { useStore } from '../../store';
-import Swal from 'sweetalert2';
+// import { useStore } from '../../store';
+// import Swal from 'sweetalert2';
 import backbutton from '../../asset/icons8-back-24.png';
 import { useNavigate } from 'react-router-dom';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
@@ -14,22 +14,22 @@ import location from "../../asset/icons8-location-48.png";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-interface GpuOption {
-  name: string;
-  label: string;
-  vram: string;
-  available: boolean;
-  tensorCores: number;
-}
+// interface GpuOption {
+//   name: string;
+//   label: string;
+//   vram: string;
+//   available: boolean;
+//   tensorCores: number;
+// }
 
-interface CpuOption {
-  name: string;
-  label: string;
-  available: boolean;
-  vCPU: number;
-  RAM: string;
-  Disk: string;
-}
+// interface CpuOption {
+//   name: string;
+//   label: string;
+//   available: boolean;
+//   vCPU: number;
+//   RAM: string;
+//   Disk: string;
+// }
 
 interface LocationOption {
   id: string;
@@ -52,9 +52,9 @@ interface Disk {
 export default function GPUCompute() {
   const [selectedGpu, setSelectedGpu] = useState<any>({});
   const [selectedGpuName, setSelectedGpuName] = useState<string>('Select GPU');
-  const [selectedCpu, setSelectedCpu] = useState<any>({});
-  const [selectedCpuName, setSelectedCpuName] = useState<string>('Select CPU');
-  const [gpuOptions, setGpuOptions] = useState<GpuOption[]>([]);
+  // const [selectedCpu, setSelectedCpu] = useState<any>({});
+  // const [selectedCpuName, setSelectedCpuName] = useState<string>('Select CPU');
+  // const [gpuOptions, setGpuOptions] = useState<GpuOption[]>([]);
   const [locationOptions, setLocationOptions] = useState<LocationOption[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<string>('us-northcentral1-a');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -66,7 +66,7 @@ export default function GPUCompute() {
   const [selectedDiskName, setSelectedDiskName] = useState<string>('Network Volume'); // Store selected disk name
   const [isModalOpen, setIsModalOpen] = useState(false); // Track if the modal is open
   const [locationError, setLocationError] = useState(false); // Track location error
-  const { setGpuName } = useStore();
+  // const { setGpuName } = useStore();
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const networkVolumeDropdownRef = useRef<HTMLDivElement>(null);
@@ -80,9 +80,9 @@ export default function GPUCompute() {
     color: 'rgb(63, 81, 117)',
   };
 
-  useEffect(() => {
-    setGpuName(isChecked ? selectedCpuName : selectedGpuName);
-  }, [selectedGpuName, selectedCpuName, setGpuName, isChecked]);
+  // useEffect(() => {
+  //   setGpuName(isChecked ? selectedCpuName : selectedGpuName);
+  // }, [selectedGpuName, selectedCpuName, setGpuName, isChecked]);
 
   useEffect(() => {
     async function fetchLocationOptions() {
@@ -302,7 +302,7 @@ export default function GPUCompute() {
           </div>
 
           <GpuSelectionComponent
-            options={gpuOptions}
+            // options={gpuOptions}
             selectedName={selectedGpuName}
             setSelectedName={setSelectedGpuName}
             setSelectedOption={setSelectedGpu}
@@ -314,9 +314,9 @@ export default function GPUCompute() {
 
       <div id='configure-development' className="flex justify-center p-5">
         <ConfigureDeployment
-          selectedGpu={isChecked ? selectedCpu : selectedGpu}
-          selectedGpuName={isChecked ? selectedCpuName : selectedGpuName}
-          isCpu={isChecked}  // Pass this flag to ConfigureDeployment
+          selectedGpu={selectedGpu}
+          selectedGpuName={selectedGpuName}
+          // isCpu={isChecked}  
           selectedLocation={selectedLocation}
           selectedDiskId={selectedDiskId}
         />

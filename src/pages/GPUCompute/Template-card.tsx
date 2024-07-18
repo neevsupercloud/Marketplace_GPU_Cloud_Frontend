@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, useDisclosure } from '@chakra-ui/react';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody} from '@chakra-ui/react';
 import axios from 'axios';
 import ubuntu from '../../asset/icons8-ubuntu-48.png';
 import { useStore } from '../../store';  // Ensure this is correctly imported

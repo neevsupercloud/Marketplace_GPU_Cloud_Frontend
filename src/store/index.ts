@@ -78,7 +78,7 @@ type Actions = {
   setCurrOrg: (o: string | null) => void;
   setProjectList: (p: ProjectType[]) => void;
   updateNewVm: (r: Record<string, string | string[] | number | number[]>) => void;
-  replaceVm: (vm: VM_T) => void;
+  // replaceVm: (vm: VM_T) => void;
   setSshKeys: (keys: SshKey[]) => void;
   setVmCount: (count: number) => void;
   setTotalCpu: (cpu: number) => void;
@@ -135,13 +135,13 @@ export const useStore = create<State & Actions>((set) => ({
   setSelectedGpu: (gpu) => set(() => ({ selectedGpu: gpu })),
   setGpuName: (name) => set(() => ({ gpuName: name })),
   setAuth: (a) => set(() => ({ auth: a })),
-  replaceVm: (vm) =>
-    set((state) => {
-      const { allVms } = state;
-      if (!allVms) return { allVms: [] };
-      const updated = allVms.map((v) => (v.slug === vm.slug ? vm : v));
-      return { allVms: updated, vmCount: updated.length };
-    }),
+  // replaceVm: (vm) =>
+  //   set((state) => {
+  //     const { allVms } = state;
+  //     if (!allVms) return { allVms: [] };
+  //     const updated = allVms.map((v) => (v.slug === vm.slug ? vm : v));
+  //     return { allVms: updated, vmCount: updated.length };
+  //   }),
   updateNewVm: (r) => set((state) => ({ newVm: { ...state.newVm, ...r } })),
   setSshKeys: (ks) => set(() => ({ sshKeys: ks })),
   setSecrets: (s) => set(() => ({ secrets: s })),

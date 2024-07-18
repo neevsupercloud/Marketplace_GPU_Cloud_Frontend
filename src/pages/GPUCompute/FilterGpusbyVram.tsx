@@ -6,7 +6,7 @@ import './FilterGpusbyVram.css';
 import { useStore } from '../../store';
 
 function FilterGpusbyVram(props: any) {
-    const [data, setData] = React.useState<any[]>([]);
+    const [data,setData] = React.useState<any[]>([]);
     const [filteredData, setFilteredData] = React.useState<any[]>([]);
     const [loading, setLoading] = React.useState(true); // Add loading state
     const { selectedLocation } = props;
@@ -69,6 +69,7 @@ function FilterGpusbyVram(props: any) {
         }
         fetchVmConfigs();
     }, [selectedLocation]);
+    console.log(data)
 
     React.useEffect(() => {
         if (filteredData && filteredData.length > 0) {

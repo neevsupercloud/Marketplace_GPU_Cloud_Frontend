@@ -7,10 +7,10 @@ import ChangeTemplateModal from './Template-card';
 import InstancePricingCard from './InstancePricingCard';
 import useApi from '../../store/useApi';
 import { useStore } from '../../store';
-import { CreateVmPayload } from '../../types';
-import { randomName } from '../../data';
+// import { CreateVmPayload } from '../../types';
+// import { randomName } from '../../data';
 import './FilterGpusbyVram.css';
-import Spinner from '../../components/Spinner-loader';
+// import Spinner from '../../components/Spinner-loader';
 import ubuntu from "../../asset/icons8-ubuntu-48.png";
 
 interface Template {
@@ -30,7 +30,7 @@ interface SshKey {
 }
 
 interface ConfigureDeploymentProps {
-  isCpu: boolean;
+  // isCpu: boolean;
   selectedGpu: any;
   selectedGpuName: string;
   selectedDiskId: string;
@@ -38,7 +38,7 @@ interface ConfigureDeploymentProps {
 }
 
 const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
-  const { createVm, getSshKeys } = useApi();
+  const {getSshKeys } = useApi();
   const {
     currOrg,
     currProject,
@@ -109,7 +109,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
 
   const deploy = async () => {
     console.log("Deploy function called.");
-    console.log("isCpu:", props.isCpu);
+    // console.log("isCpu:", props.isCpu);
     console.log("selectedGpu:", props.selectedGpu);
 
     if (!InstanceName) {
@@ -122,7 +122,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
       return;
     }
 
-    if (!props.isCpu && (!props.selectedGpu || !props.selectedGpu.isChecked)) {
+    if ((!props.selectedGpu || !props.selectedGpu.isChecked)) {
       console.log("No GPU configuration selected.");
       Swal.fire({
         icon: 'warning',
@@ -254,7 +254,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
             />
           </div>
           <div className="font-Inter font-[600] text-[16px] text-[#0D1115]/70" style={{ marginTop: "20px" }}>
-            {props.isCpu ? "Operating System" : "Template"}
+            {/* {props.isCpu ? "Operating System" : "Template"} */}
           </div>
           <hr className="my-2 border-gray-300" style={{ marginBottom: "6px" }} />
         </div>
@@ -319,7 +319,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
               </div>
             </div>
           ))}
-          {props.selectedGpu && props.isCpu && (
+          {props.selectedGpu && (
             <div className="w-full md:w-[49.5%]  md:mb-0 p-5 border border-[#673AB7]/10 rounded-[10px]" style={{ height: "158px" }}>
               <div className=" font-Inter font-[600] text-[16px] text-[#673AB7]/70">
                 Instance Summary
@@ -337,7 +337,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
               </div>
             </div>
           )}
-          {props.selectedGpu && !props.isCpu && (
+          {props.selectedGpu && (
             <div className="w-full md:w-[49.5%] mb-4 md:mb-0 p-5 border border-[#673AB7]/10 rounded-[10px]">
               <div className="mb-4 font-Inter font-[600] text-[16px] text-[#673AB7]/70">
                 Instance Summary

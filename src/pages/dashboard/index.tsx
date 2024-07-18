@@ -8,7 +8,7 @@ import DashboardGraph from "./Dashboard_graph";
 import { useNavigate } from 'react-router-dom';
 import './Dashresource.css';
 import { useStore } from '../../store';
-import useApi from '../../store/useApi';
+// import useApi from '../../store/useApi';
 
 interface VM {
   type: string;
@@ -19,7 +19,7 @@ interface VM {
 export default function Dashboards() {
   const navigate = useNavigate();
   const { auth, currOrg, setCurrOrg } = useStore();
-  const { getVms } = useApi();
+  // const { getVms } = useApi();
 
   const [orgSlug, setOrgSlug] = useState<string | null>(null);
   const [totalCpu, setTotalCpu] = useState<number>(0);
@@ -128,6 +128,7 @@ export default function Dashboards() {
   useEffect(() => {
     console.log('Current Organization in useEffect:', currOrg);
   }, [currOrg]);
+  console.log(orgSlug)
 
   useEffect(() => {
     const fetchVmsData = async () => {
@@ -146,7 +147,7 @@ export default function Dashboards() {
           console.log('Fetched VMs:', data);
 
           const runningVms = data.items.filter((vm: VM) => vm.state === 'STATE_RUNNING');
-          const allRunningVms = data.items.length;
+          // const allRunningVms = data.items.length;
 
           // const totalCpu = runningVms.reduce((acc: number, vm: VM) => acc + parseInt(vm.type.split('.')[1]), 0);
           const totalStorage = runningVms.reduce((acc: number, vm: VM) => {

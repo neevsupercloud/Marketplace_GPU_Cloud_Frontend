@@ -46,11 +46,11 @@ const renderGpuInfo = (type: string) => {
   }
 };
 
-const STATUS_COLOR: { [key: string]: string } = {
-  STATE_SHUTOFF: 'text-red-500',
-  STATE_PAUSED: 'text-yellow-500',
-  STATE_RUNNING: 'text-green-500',
-};
+// const STATUS_COLOR: { [key: string]: string } = {
+//   STATE_SHUTOFF: 'text-red-500',
+//   STATE_PAUSED: 'text-yellow-500',
+//   STATE_RUNNING: 'text-green-500',
+// };
 
 const renderStatus = (state: string) => {
   switch (state) {
@@ -85,13 +85,13 @@ const renderStatus = (state: string) => {
 };
 
 function InstanceCards() {
-  const { setCurrVm } = useStore();
+  // const { setCurrVm } = useStore();
   const { slug } = useParams<{ slug: string }>();
   const [vmState, setVmState] = useState<VM_T | null>(null);
   const [vmSlug, setVmSlug] = useState<null | string>(null);
   const [stateChanged, setStateChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // Add loading state
-  const retryCount = useRef(0);
+  // const retryCount = useRef(0);
   const intervalId = useRef<NodeJS.Timeout | null>(null);
 
   const fetchVmDetails = async () => {
@@ -178,27 +178,27 @@ function InstanceCards() {
     }
   };
 
-  const handleDeleteVm = async (vmSlug: string) => {
-    try {
-      const response = await fetch(`https://api.mkinf.io/v0/vms/${vmSlug}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
-        },
-      });
-      if (response.ok) {
-        toast.success('VM deleted successfully');
-        setVmSlug(null);
-        handleApiPolling(); // Start polling after action
-      } else {
-        throw new Error('Error deleting VM');
-      }
-    } catch (error) {
-      console.error('Error deleting VM:', error);
-      toast.error('Error deleting VM');
-    }
-  };
+  // const handleDeleteVm = async (vmSlug: string) => {
+  //   try {
+  //     const response = await fetch(`https://api.mkinf.io/v0/vms/${vmSlug}`, {
+  //       method: 'DELETE',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
+  //       },
+  //     });
+  //     if (response.ok) {
+  //       toast.success('VM deleted successfully');
+  //       setVmSlug(null);
+  //       handleApiPolling(); // Start polling after action
+  //     } else {
+  //       throw new Error('Error deleting VM');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error deleting VM:', error);
+  //     toast.error('Error deleting VM');
+  //   }
+  // };
 
   const renderAction = (vm: VM_T) => {
     const isRunning = vm.state === "STATE_RUNNING";

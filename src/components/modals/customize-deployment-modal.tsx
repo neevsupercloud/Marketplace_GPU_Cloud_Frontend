@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 import Spinner from "../Spinner-loader.tsx";
 
 export default function CustomizeDeploymentModal({onClose}: { onClose: () => void }) {
-  const {newVm, updateNewVm, currOrg, setVolumes,auth} = useStore();
+  const {newVm, updateNewVm, currOrg, setVolumes, auth} = useStore();
   const {_get, project_slug} = useQuery();
   const [modalState, setModalState] = useState<"loading" | "idle">("loading");
   const [selectedVolumes, setSelectedVolumes] = useState<Volume[]>([]);
@@ -41,7 +41,7 @@ export default function CustomizeDeploymentModal({onClose}: { onClose: () => voi
       'Authorization': `Bearer ${auth}`, // Pass the access token in the header
       'Content-Type': 'application/json',
     };
-    _get<GetVolumesResponse>(ENDPOINTS.getVolumes(currOrg, project_slug),headers)
+    _get<GetVolumesResponse>(ENDPOINTS.getVolumes(currOrg, project_slug), headers)
       .then(resp => {
         if (!resp || !resp.volumes) return console.log("cannot fetch volumes");
         setVolumes(resp.volumes);

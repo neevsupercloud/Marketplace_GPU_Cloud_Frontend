@@ -41,7 +41,17 @@ export type Volume = {
   updated_at: string;
   serial_number: string;
   attached_to: string[];
+  metadata: {
+    name: string;
+    uid: string;
+  };
+  status: {
+    capacity: {
+      storage: string;
+    };
+  };
 };
+
 
 
 export type VM_T = {

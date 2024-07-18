@@ -1,8 +1,8 @@
 import  { useState } from 'react';
-import { HomeIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
+import { HomeIcon } from '@heroicons/react/24/outline';
 import Overview from './InstanceCards';
-import RescaleGPU from './RescaleGPU';
-import MonitoringGPU from './MonitoringGPU';
+// import RescaleGPU from './RescaleGPU';
+// import MonitoringGPU from './MonitoringGPU';
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 import { useNavigate } from 'react-router-dom';
 import backbutton from '../../asset/icons8-back-24.png';

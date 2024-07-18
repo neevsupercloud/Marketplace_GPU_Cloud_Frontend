@@ -7,7 +7,7 @@ type DashboardResourceProps = {
   totalVRam: number; // Add this prop
 };
 
-const DashboardResource: React.FC<DashboardResourceProps> = ({ totalCpu, totalStorage, gpuCount, totalVRam }) => {
+const DashboardResource: React.FC<DashboardResourceProps> = ({  totalStorage, gpuCount }) => {
   const subHeading = {
     margin: 0,
     fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',

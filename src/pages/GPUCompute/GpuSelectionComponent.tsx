@@ -10,7 +10,7 @@ interface GpuOption {
 }
 
 interface GpuSelectionProps {
-  options: GpuOption[];
+  // options: GpuOption[];
   selectedLocation: string;
   selectedName: string;
   setSelectedName: (name: string) => void;
@@ -19,21 +19,19 @@ interface GpuSelectionProps {
 }
 
 const GpuSelectionComponent: React.FC<GpuSelectionProps> = ({
-  options,
-  selectedName,
-  setSelectedName,
+  // options,
+  // setSelectedName,
   setSelectedOption,
   selectedLocation,
-  title
 }) => {
 
-  const handleSelection = (name: string) => {
-    const selected = options.find(option => option.name === name);
-    if (selected && selected.available) {
-      setSelectedName(name);
-      setSelectedOption(selected);  // Ensure selectedOption is set correctly
-    }
-  };
+  // const handleSelection = (name: string) => {
+  //   const selected = options.find(option => option.name === name);
+  //   if (selected && selected.available) {
+  //     setSelectedName(name);
+  //     setSelectedOption(selected);  // Ensure selectedOption is set correctly
+  //   }
+  // };
 
   return (
     <div className="p-0 my-5">

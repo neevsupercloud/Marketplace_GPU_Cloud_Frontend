@@ -9,49 +9,49 @@ import VmDetailsBottomSheet from "./VmDetailsBottomSheet.tsx";
 import {BiPlus} from "react-icons/bi";
 import {useNavigate} from "react-router-dom";
 import useApi from "../../store/useApi.ts";
-import {DataGrid, GridColDef} from "@mui/x-data-grid";
-import {ThemeProvider} from "@mui/material";
-import {muiTheme} from "../../theme.ts";
+// import {DataGrid, GridColDef} from "@mui/x-data-grid";
+// import {ThemeProvider} from "@mui/material";
+// import {muiTheme} from "../../theme.ts";
 import {AiOutlineReload} from "react-icons/ai";
 import DeleteVmModal from "../../components/modals/delete-vm-modal.tsx";
-import DisplayVmStatus from "./display-vm-status.tsx";
-import DisplayServices from "./display-services.tsx";
-import ActionsMenu from "./actions-menu.tsx";
+// import DisplayVmStatus from "./display-vm-status.tsx";
+// import DisplayServices from "./display-services.tsx";
+// import ActionsMenu from "./actions-menu.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 
 export default function ListVms() {
   const {project_slug} = useQuery();
-  const {allVms, setAllVms, currOrg, currVm, setCurrVm} = useStore();
+  const {allVms, setAllVms, currOrg, currVm} = useStore();
   const navigate = useNavigate();
   const {getVms} = useApi();
   const [deleteVmSlug, setDeleteVmSlug] = useState<null | string>(null);
 
-  const tableColumns: GridColDef[] = [
-    {field: "displayName", headerName: "Name", width: 200, flex: 1},
-    {field: "cpu", headerName: "CPU", width: 120, flex: 1},
-    {field: "ram", headerName: "RAM", width: 120, flex: 1},
-    {field: "storage", headerName: "Storage", width: 120, flex: 1},
-    {field: "distro", headerName: "Distribution", width: 120, flex: 1},
-    {
-      field: "state",
-      flex: 1,
-      headerName: "State",
-      renderCell: params => <DisplayVmStatus status={params.row.state}/>
-    },
-    {
-      field: "services",
-      // flex: 1,
-      headerName: "Services",
-      width: 300,
-      renderCell: params => <DisplayServices vm={params.row}/>
-    },
-    {
-      field: "actions",
-      flex: 1,
-      headerName: "Actions",
-      renderCell: params => <ActionsMenu deleteVm={() => setDeleteVmSlug(params.row.slug)} vm={params.row}/>
-    }
-  ];
+  // const tableColumns: GridColDef[] = [
+  //   {field: "displayName", headerName: "Name", width: 200, flex: 1},
+  //   {field: "cpu", headerName: "CPU", width: 120, flex: 1},
+  //   {field: "ram", headerName: "RAM", width: 120, flex: 1},
+  //   {field: "storage", headerName: "Storage", width: 120, flex: 1},
+  //   {field: "distro", headerName: "Distribution", width: 120, flex: 1},
+  //   {
+  //     field: "state",
+  //     flex: 1,
+  //     headerName: "State",
+  //     renderCell: params => <DisplayVmStatus status={params.row.state}/>
+  //   },
+  //   {
+  //     field: "services",
+  //     // flex: 1,
+  //     headerName: "Services",
+  //     width: 300,
+  //     renderCell: params => <DisplayServices vm={params.row}/>
+  //   },
+  //   {
+  //     field: "actions",
+  //     flex: 1,
+  //     headerName: "Actions",
+  //     renderCell: params => <ActionsMenu deleteVm={() => setDeleteVmSlug(params.row.slug)} vm={params.row}/>
+  //   }
+  // ];
 
   useEffect(() => {
     getVms().then(vms => setAllVms(vms));
@@ -74,7 +74,7 @@ export default function ListVms() {
               <AiOutlineReload/>
             </IconButton>
           </div>
-          <ThemeProvider theme={muiTheme}>
+          {/* <ThemeProvider theme={muiTheme}>
             <DataGrid
               className="bg-white"
               getRowId={row => row.uid}
@@ -100,7 +100,7 @@ export default function ListVms() {
                 setCurrVm(lastSelectedRow[0] ?? null);
               }}
             />
-          </ThemeProvider>
+          </ThemeProvider> */}
         </div>
       </Panel>
       {currVm && (

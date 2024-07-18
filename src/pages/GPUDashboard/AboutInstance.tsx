@@ -7,7 +7,7 @@ import { FaRegCheckCircle } from 'react-icons/fa';
 // import { Spinner } from '@chakra-ui/react';
 import Spinner from '../../components/Spinner-loader';
 import { useParams } from 'react-router-dom';
-import InstanceMetrics from './InstanceMetrics';
+// import InstanceMetrics from './InstanceMetrics';
 import InstanceLogs from './InstanceLogs';
 import './AboutInstance.css'
 
@@ -80,7 +80,7 @@ function AboutInstance() {
                             <div className="mx-3 font-Inter font-[600] text-[20px] text-[#0D1115]" style={sub_Heading}>
                                 A100:12x144
                                 <br /><span className="font-[400] text-[16px] text-[#3f5175]/70" style={sub_Heading}>
-                                    ID: {currVm?.displayName}
+                                    {/* ID: {currVm?.displayName} */}
                                 </span>
                             </div>
                         </div>
@@ -126,7 +126,7 @@ function AboutInstance() {
                                     High demand
                                 </div>
                             </div>
-                            <div className="border border-[#0D11151A]/10 p-3 bg-[#f2f5f9]">
+                            {/* <div className="border border-[#0D11151A]/10 p-3 bg-[#f2f5f9]">
                                 <div className="flex justify-between items-center text-[12px]" style={{ color: "3f5175", fontWeight: 500 }}>
                                     <div className="">GPU</div>
                                     <div className="">1 Nvidia A100 (80 GiB)</div>
@@ -147,7 +147,7 @@ function AboutInstance() {
                                     <div className="">Cost</div>
                                     <div className="">$0.10240/min</div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="border border-[#0D11151A]/10 text-[12px] p-3 bg-[#f2f5f9] mb-2 text-[#3f5175]" style={{ fontWeight: "500px" }}>
                                 You may experience downtime when this instance type is at capacity. For guaranteed uptime and lower costs,<span className="text-[#673ab7] cursor-pointer" style={{ fontWeight: 500 }}>&nbsp;&nbsp;talk to our sales team.</span>
                             </div>
@@ -175,7 +175,8 @@ function AboutInstance() {
             ) : activeSubTab === "Logs" ? (
                 <InstanceLogs />
             ) : (
-                <InstanceMetrics />
+                // <InstanceMetrics />f
+                <div>d</div>
             )}
         </div>
     )
