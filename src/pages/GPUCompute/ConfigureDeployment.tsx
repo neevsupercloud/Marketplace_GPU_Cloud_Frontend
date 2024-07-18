@@ -319,7 +319,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
               </div>
             </div>
           ))}
-          {props.selectedGpu && (
+          {/* {props.selectedGpu && (
             <div className="w-full md:w-[49.5%]  md:mb-0 p-5 border border-[#673AB7]/10 rounded-[10px]" style={{ height: "158px" }}>
               <div className=" font-Inter font-[600] text-[16px] text-[#673AB7]/70">
                 Instance Summary
@@ -336,7 +336,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
           {props.selectedGpu && (
             <div className="w-full md:w-[49.5%] mb-4 md:mb-0 p-5 border border-[#673AB7]/10 rounded-[10px]">
               <div className="mb-4 font-Inter font-[600] text-[16px] text-[#673AB7]/70">

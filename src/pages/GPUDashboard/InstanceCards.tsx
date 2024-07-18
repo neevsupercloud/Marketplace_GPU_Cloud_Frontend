@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useStore } from '../../store';
+// import { useStore } from '../../store';
 import { VM_T } from '../../types'; // Adjust the import path as needed
 import DeleteVmModal from '../../components/modals/delete-vm-modal';
 import Spinner from '../../components/Spinner-loader';

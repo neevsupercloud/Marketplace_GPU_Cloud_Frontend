@@ -7,7 +7,7 @@ import {
   ModalBody,
   Button,
 } from '@chakra-ui/react';
-import TemplateCard from './Template-card';
+// import TemplateCard from './Template-card';
 
 const Heading = {
   marginLeft: "5px",
@@ -43,7 +43,7 @@ function ChangeTemplate(props: any) {
             </div>
             <div>
               <div className="my-8" style={sub_Heading}>Your Template</div>
-              <TemplateCard /> {/* Include the TemplateCard component here */}
+              {/* <TemplateCard /> Include the TemplateCard component here */}
             </div>
           </ModalBody>
           <ModalFooter>
