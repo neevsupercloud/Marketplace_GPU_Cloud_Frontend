@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: console
+  labels:
+    app: console
+spec:
+  selector:
+    matchLabels:
+      app: console
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: console
+    spec:
+      containers:
+        - image: anjuls/ui:1.1
+          name: console
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "200M"
+          ports:
+            - containerPort: 5173
+              name: console
+          env:
+            - name: VITE_BASE_URL
+              value: ""
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: console
+spec:
+  selector:
+    app: console
+  type: ClusterIP
+  ports:
+    - name: console
+      port: 5173
+      targetPort: 5173
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/tls-acme: "true"
+  name: console
+  namespace: gui
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: demogpu.neevcloud.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: console
+            port:
+              number: 5173
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - demogpu.neevcloud.com
+    secretName: console-tls

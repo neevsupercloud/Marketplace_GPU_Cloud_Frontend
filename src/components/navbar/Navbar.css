@@ -1,0 +1,72 @@
+.custom-container-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 79px;
+  padding: 0 1rem; /* 16px */
+  background-color: #f1f5f9;
+}
+
+.toggle-button-container {
+  display: none; /* Initially hidden, shown in media query */
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hidden-logo{
+  width:169px;
+  height:40px;
+  margin-left: 36px;
+  margin-top: 9px;
+
+}
+
+.custom-box {
+  width: 28%;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem; /* 8px */
+  border-radius: 8px;
+  margin: 0.5rem 1.25rem; /* 8px top/bottom, 20px left/right */
+  border: 1px solid transparent; /* Initial border to avoid shift */
+}
+
+.custom-box:focus-within {
+  border-color: black;
+}
+
+.flex-container-navbar-rightsection {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* 16px */
+}
+
+@media (max-width: 1100px) {
+  .toggle-button-container {
+    display: block; /* Show toggle button on smaller screens */
+  }
+
+  .custom-box {
+    display: none; /* Hide search box on smaller screens */
+  }
+
+  .region-city,
+  .username_auth,
+  .project-menu,
+  .button_region {
+    display: none; /* Hide these elements on smaller screens */
+  }
+
+  .custom-container-navbar {
+    justify-content: flex-end; /* Align elements to the right */
+  }
+  .hidden-logo{
+    display: none;
+  }
+}

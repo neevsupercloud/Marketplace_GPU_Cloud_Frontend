@@ -1,0 +1,65 @@
+.filter_gray {
+    background-color: #f1f1f1;
+    /* Equivalent to bg-gray-200 */
+    height: 3rem;
+    /* Equivalent to h-12 */
+    display: flex;
+    /* Equivalent to flex */
+    align-items: center;
+    /* Equivalent to items-center */
+    justify-content: flex-start;
+    /* Equivalent to justify-start */
+    filter: grayscale(100%);
+    /* Equivalent to filter_gray */
+}
+
+.neevcloud-pytorch {
+    border: 1px solid #e5e7eb; /* border color */
+    border-radius: 0.5rem; /* border radius */
+    padding: 1rem; /* padding */
+    margin: 0.5rem; /* margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+  }
+  .with-left-border {
+    border-left: 3px solid rgb(103, 58, 183); /* left border */
+  }
+ 
+  .TemplateCard-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center;
+  }
+@media (max-width: 1200px) {
+    .filters {
+        display: none;
+    }
+
+    .filter_gray {
+        display: none;
+    }
+    .filter-icon {
+        display: none;
+       
+    }
+
+}
+@media (max-width: 800px) {
+  
+    .card_gpu{
+        flex-direction: column;
+    }
+}
+@media (max-width: 600px) {
+    .neevcloud-pytorch {
+      width: 100%;
+    }
+  
+    .TemplateCard-container {
+      overflow-y: auto;
+      max-height: 80vh; /* Adjust the maximum height as needed */
+    }
+  }
+  

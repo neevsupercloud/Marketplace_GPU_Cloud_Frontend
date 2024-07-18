@@ -1,0 +1,13 @@
+.aboutInstance_overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f5f9;
+}
+
+@media (min-width: 600px) {
+    .aboutInstance_overview {
+        flex-direction: row;
+    }
+}

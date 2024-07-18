@@ -1,0 +1,62 @@
+
+.select-style-filter {
+    height: 47px;
+    width: 150px;
+    border: 1px solid rgba(13, 17, 21, 0.1);
+    border-radius: 4px;
+    padding-left: 2.5rem; /* Increase padding to make space for the icon */
+    background-color: #f2f5f9;
+    color: #3f5175; /* Text color */
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="#3f5175" d="M2 0L0 2h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center; /* Adjusted the right padding for the custom arrow */
+    background-size: 0.65em auto;
+}
+
+.select-style-filter option {
+    color: #3f5175; /* Option text color */
+}
+
+.select-style-filter:focus {
+    border-color: #3f5175;
+    box-shadow: 0 0 0 2px rgba(63, 81, 117, 0.2);
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper img {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem; /* Adjust this value to reduce the gap */
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 22px;
+    height: 22px;
+}
+
+.deploy-model-style{
+    padding: 1.25rem; /* Equivalent to p-5 */
+    background-color: #f3f5f9; /* Equivalent to bg-[#f3f5f9] */
+    border-radius: 8px; /* Equivalent to rounded-[8px] */
+    border: 1px solid rgba(13, 17, 21, 0.063);
+    width: 85%;
+}
+.select-style-filter{
+    height: 47px;
+    width: 150px;
+    border: 1px solid #0D11151A; /* Border with opacity */
+    border-radius: 4px;
+    padding: 0 1px; /* Adjust padding as needed */
+    background-color: #f2f5f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 900px) {
+    .deploy-model-style{
+        width: 100%;
+    }
+}
