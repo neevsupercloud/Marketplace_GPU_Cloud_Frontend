@@ -20,7 +20,7 @@ const STATUS_COLOR: { [key: string]: string } = {
 };
 
 export default function GPUDashboard() {
-  const { setAllVms, setVmCount,setOperationId, allVms, operation_id } = useStore();
+  const { setAllVms, setVmCount, setOperationId, allVms, operation_id } = useStore();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(false);
@@ -33,7 +33,7 @@ export default function GPUDashboard() {
   useEffect(() => {
     const fetchOperationStatus = async () => {
       if (!operation_id) return;
-  
+
       try {
         const response = await fetch(`https://api.mkinf.io/v0/vms/operations/${operation_id}`, {
           headers: {
@@ -41,24 +41,24 @@ export default function GPUDashboard() {
             'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
           },
         });
-  
+
         const result = await response.json();
-  
+
         if (result.state === 'FAILED') {
-          toast.error(`Out of Stock`);
+          toast.error(`Out of Stock, Please try for different location`);
           setLoading(false);
           setOperationId("")
 
           return;
         }
-  
+
         fetchVms();
       } catch (error) {
         console.error('Error fetching operation status:', error);
         setLoading(false);
       }
     };
-  
+
     const fetchVms = async () => {
       try {
         const response = await fetch('https://api.mkinf.io/v0/vms', {
@@ -77,7 +77,7 @@ export default function GPUDashboard() {
         setLoading(false);
       }
     };
-  
+
     const startInterval = () => {
       fetchOperationStatus();
       const operationIntervalId = setInterval(fetchOperationStatus, 2000); // Run fetchOperationStatus every 2 seconds
@@ -88,15 +88,15 @@ export default function GPUDashboard() {
         clearInterval(vmsIntervalId);
       };
     };
-  
+
     const clearIntervals = startInterval();
-  
+
     return () => {
       clearIntervals();
     };
-  }, [ operation_id]);
-  
-  
+  }, [operation_id]);
+
+
 
   if (loading) {
     return (
@@ -145,30 +145,30 @@ export default function GPUDashboard() {
   const renderStatus = (state: string) => {
     switch (state) {
       case 'STATE_SHUTOFF':
-        return <span className="text-red-500">Stopped</span>;
+        return <span className="text-red-500" style={{ marginLeft: "11px" }} >Stopped</span>;
       case 'STATE_SHUTDOWN':
         return (
-          <span className="text-yellow-500">
+          <span className="text-yellow-500" style={{ marginLeft: "11px" }}>
             Stopping
             <span className="loading-dots">...</span>
           </span>
         );
       case 'STATE_PAUSED':
         return (
-          <span className="text-yellow-500">
+          <span className="text-yellow-500" style={{ marginLeft: "11px" }}>
             On Progress
             <span className="loading-dots">...</span>
           </span>
         );
       case 'STATE_DEFINING':
         return (
-          <span className="text-yellow-500">
+          <span className="text-yellow-500" style={{ marginLeft: "11px" }}>
             On Progress
             <span className="loading-dots">...</span>
           </span>
         );
       case 'STATE_RUNNING':
-        return <span className="text-green-500">Running</span>;
+        return <span className="text-green-500" style={{ marginLeft: "11px" }}>Running</span>;
       default:
         return state;
     }
@@ -288,7 +288,7 @@ export default function GPUDashboard() {
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="border-separate border-spacing-y-2 w-full min-w-[360px] mx-auto">
+        <table className="border-separate border-spacing-y-2 w-[97.5%] min-[1600px]:table-fixed mx-auto">
           <thead>
             <tr>
               <th className="bg-white text-start text-[#3F5175] border-y border-l border-[#0D11151A]/10 rounded-l-[8px] py-2 px-4">Instance</th>
@@ -296,7 +296,7 @@ export default function GPUDashboard() {
               <th className="bg-white text-start text-[#3F5175] border-y border-[#0D11151A]/10 py-2 px-4">Status</th>
               <th className="bg-white text-start text-[#3F5175] border-y border-[#0D11151A]/10 py-2 px-4">Location</th>
               <th className="bg-white text-start text-[#3F5175] border-y border-[#0D11151A]/10 py-2 px-4">IP Address</th>
-              <th className="bg-white text-start text-[#3F5175] border-y border-r border-[#0D11151A]/10 rounded-r-[8px] py-2 px-4">Action</th>
+              <th className="bg-white text-start text-[#3F5175] border-y border-r border-[#0D11151A]/10 rounded-r-[8px] ml-8 py-2 px-12">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -307,7 +307,6 @@ export default function GPUDashboard() {
                     <div className='flex flex-col items-start'>
                       <h5 className='font-Inter text-[13px] font-[600]'>{vm.name}</h5>
                       <h5 className='font-Inter text-[13px] font-[600]'>{renderGpuInfo(vm.type)}</h5>
-                      <h5 className='font-[400] text-[12px] text-[#0D1115B8]/72'>{vm.id}</h5>
                     </div>
                   </td>
                   <td className="bg-white border-y border-[#0D11151A]/10 py-2 px-4" onClick={() => { navigate(`/gpu-compute/about-instance/${vm.id}`); }}>
@@ -316,41 +315,22 @@ export default function GPUDashboard() {
                       <h5 className='font-Inter font-[400] text-[12px] text-[#0D1115B8]/72'>{vm.disks && vm.disks.length > 0 ? vm.disks[0].size : 'No disks'} Storage</h5>
                     </div>
                   </td>
-                  <td style={{ width: "120px" }} className={`bg-white border-y border-[#0D11151A]/10 p-2 text-start ${STATUS_COLOR[vm.state]} font-[600] font-Inter text-[12px] `}
-                    onClick={() => { navigate(`/gpu-compute/about-instance/${vm.id}`); }}>
+                  <td className={`bg-white border-y border-[#0D11151A]/10 p-2 text-start ${STATUS_COLOR[vm.state]} font-[600] font-Inter text-[12px]`} style={{ width: "120px" }} onClick={() => { navigate(`/gpu-compute/about-instance/${vm.id}`); }}>
                     {renderStatus(vm.state)}
                   </td>
                   <td className="bg-white border-y border-[#0D11151A]/10 font-Inter text-start font-[400] text-[12px] text-[#0D1115B8]/72 py-2 px-4" onClick={() => { navigate(`/gpu-compute/about-instance/${vm.id}`); }}>{vm.location}</td>
-                  <td
-                    className="bg-white border-y border-[#0D11151A]/10 font-Inter text-start font-[400] text-[12px] text-[#0D1115B8]/72 py-2 px-4 cursor-pointer"
-                    onClick={() => copyToClipboard(vm.network_interfaces && vm.network_interfaces.length > 0 && vm.network_interfaces[0].ips && vm.network_interfaces[0].ips.length > 0 && vm.network_interfaces[0].ips[0].public_ipv4.address ? vm.network_interfaces[0].ips[0].public_ipv4.address : '')}
-                  >
+                  <td className="bg-white border-y border-[#0D11151A]/10 font-Inter text-start font-[400] text-[12px] text-[#0D1115B8]/72 py-2 px-4 cursor-pointer" onClick={() => copyToClipboard(vm.network_interfaces && vm.network_interfaces.length > 0 && vm.network_interfaces[0].ips && vm.network_interfaces[0].ips.length > 0 && vm.network_interfaces[0].ips[0].public_ipv4.address ? vm.network_interfaces[0].ips[0].public_ipv4.address : '')}>
                     {vm.network_interfaces && vm.network_interfaces.length > 0 && vm.network_interfaces[0].ips && vm.network_interfaces[0].ips.length > 0 && vm.network_interfaces[0].ips[0].public_ipv4.address ? vm.network_interfaces[0].ips[0].public_ipv4.address : ''}
                   </td>
                   <td className="bg-white border-y border-r border-[#0D11151A]/10 font-Inter text-start font-[400] text-[12px] text-[#0D1115B8]/72 py-2 px-4">
                     <div className="flex items-center space-x-2">
-                      <div
-                        className={`p-2 rounded-full ${vm.state !== 'STATE_SHUTOFF' ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:bg-[#EEEEEE]'}`}
-                        data-tooltip-id="delete-tooltip"
-                        data-tooltip-content="Delete"
-                        onClick={() => handleDelete(vm.id, vm.state)}
-                      >
+                      <div className={`p-2 rounded-full ${vm.state !== 'STATE_SHUTOFF' ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:bg-[#EEEEEE]'}`} data-tooltip-id="delete-tooltip" data-tooltip-content="Delete" onClick={() => handleDelete(vm.id, vm.state)}>
                         <RiDeleteBin6Line color="#FF0000" size={20} />
                       </div>
-                      <div
-                        className={`p-2 rounded-full ${vm.state !== 'STATE_SHUTOFF' ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:bg-[#EEEEEE]'}`}
-                        data-tooltip-id="restart-tooltip"
-                        data-tooltip-content="Restart"
-                        onClick={() => handleRestart(vm.id, vm.state)}
-                      >
+                      <div className={`p-2 rounded-full ${vm.state !== 'STATE_SHUTOFF' ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:bg-[#EEEEEE]'}`} data-tooltip-id="restart-tooltip" data-tooltip-content="Restart" onClick={() => handleRestart(vm.id, vm.state)}>
                         <TbReload color="#236BF5" size={20} />
                       </div>
-                      <div
-                        className={`p-2 rounded-full ${vm.state !== 'STATE_RUNNING' ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:bg-[#EEEEEE]'}`}
-                        data-tooltip-id="shutdown-tooltip"
-                        data-tooltip-content="Shutdown"
-                        onClick={() => handleShutdown(vm.id, vm.state)}
-                      >
+                      <div className={`p-2 rounded-full ${vm.state !== 'STATE_RUNNING' ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:bg-[#EEEEEE]'}`} data-tooltip-id="shutdown-tooltip" data-tooltip-content="Shutdown" onClick={() => handleShutdown(vm.id, vm.state)}>
                         <RiShutDownLine color="#673ab7" size={20} />
                       </div>
                     </div>
@@ -362,12 +342,23 @@ export default function GPUDashboard() {
               ))
               :
               <tr>
-                <td colSpan={7} className="text-center py-4">No data found</td>
-              </tr>
+              <td colSpan={6} className="text-center py-4">
+                  <div className="text-center">
+                      <img 
+                          src='https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127823.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1721347200&semt=ais_user' 
+                          style={{ display: "block", margin: "0 auto",width:"300px",height:"240px",opacity:0.5 }} 
+                          alt="No data concept"
+                      />
+                      <div style={{opacity:0.5,color:"#3f5175",fontWeight:600}}>Deploy your first Gpu Vm !!</div>
+                  </div>
+              </td>
+          </tr>
+          
             }
           </tbody>
         </table>
       </div>
+
       {isDeleteModalOpen && selectedVmId && (
         <DeleteVmModal
           onClose={() => setIsDeleteModalOpen(false)}

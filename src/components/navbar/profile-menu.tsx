@@ -1,6 +1,6 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import Spinner from "../Spinner-loader";
-import { BiChevronDown, BiPlus } from "react-icons/bi";
+import { BiChevronDown} from "react-icons/bi";
 import { MdAccountCircle } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import NewProjectModal from "../modals/new-project-modal";
@@ -55,11 +55,11 @@ export default function ProfileMenu() {
               <hr className="mt-1 border-gray-300" style={{ width: "200px" }} />
             </div>
 
-            <div style={{ display: "flex", marginTop: "7px" }}>
+            {/* <div style={{ display: "flex", marginTop: "7px" }}>
               <p style={{ marginTop: "5px" }}><BiPlus /></p>
               <p className="text-center font-semibold w-full" style={{ marginLeft: "-35px" }}>New Project</p>
-            </div>
-            <hr className="mt-1 border-gray-300" style={{ width: "200px" }} />
+            </div> */}
+            {/* <hr className="mt-1 border-gray-300" style={{ width: "200px" }} /> */}
           </div>
         </MenuItem>
         <MenuItem onClick={() => keycloak.logout()} className="w-full flex items-center justify-between">

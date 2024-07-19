@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoIosSearch } from 'react-icons/io';
 import { FaBars } from 'react-icons/fa';
-import SelectRegion from './select-region';
+// import SelectRegion from './select-region';
 import ProfileMenu from './profile-menu';
 import ProjectMenu from './project-menu';
 import './Navbar.css';
@@ -49,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
         </div>
       </div>
       <div className="flex-container-navbar-rightsection" style={{ marginLeft: "-16px",height:"40px",marginTop:"-10px" }}>
-        <SelectRegion />
+        {/* <SelectRegion /> */}
         <ProjectMenu />
         <ProfileMenu />
         {/* <AddButton/>        */}
