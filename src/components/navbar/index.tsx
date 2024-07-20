@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
     <div className="custom-container-navbar" style={{ display: "flex", justifyContent: "space-between" }}>
       <div className="toggle-button-container">
         <button className="toggle-button" onClick={onToggleSidebar}>
-          <FaBars size={20} style={{ color: 'white' }} />
+          <FaBars size={20} style={{ color: '#673ab7' }} />
         </button>
       </div>
       <div className="custom-box" style={{ marginLeft: "-16px",height:"40px",marginTop:"-10px" }}>

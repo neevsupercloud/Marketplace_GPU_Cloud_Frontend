@@ -13,6 +13,7 @@ function FilterGpusbyVram(props: any) {
   const { selectedLocation } = props;
   const { selectedGpu, setSelectedGpu } = useStore();
   const [gpuCount, setGpuCount] = React.useState<number>(0);
+  console.log(selectedGpu)
 
   React.useEffect(() => {
     async function fetchVmConfigs() {
@@ -29,8 +30,29 @@ function FilterGpusbyVram(props: any) {
             case 'a40.1x':
               hourlyPriceUSD = 1.10;
               break;
+            case 'a40.2x':
+              hourlyPriceUSD = 2.20;
+              break;
+            case 'a40.4x':
+              hourlyPriceUSD = 4.40;
+              break;
+            case 'a40.8x':
+              hourlyPriceUSD = 8.80;
+              break;
             case 'l40s-48gb.1x':
               hourlyPriceUSD = 1.25;
+              break;
+            case 'l40s-48gb.2x':
+              hourlyPriceUSD = 2.50;
+              break;
+            case 'l40s-48gb.4x':
+              hourlyPriceUSD = 5.00;
+              break;
+            case 'l40s-48gb.8x':
+              hourlyPriceUSD = 10.00;
+              break;
+            case 'l40s-48gb.10x':
+              hourlyPriceUSD = 12.50;
               break;
             case 'a100-40gb-pcie.1x':
               hourlyPriceUSD = 1.60;
@@ -38,8 +60,33 @@ function FilterGpusbyVram(props: any) {
             case 'a100-80gb-pcie.1x':
               hourlyPriceUSD = 1.81;
               break;
-            case 'a100-80gb-sxm.1x':
-              hourlyPriceUSD = 2.14;
+            case 'a100-80gb.1x':
+              hourlyPriceUSD = 1.81;
+              break;
+              case 'a100.1x':
+                hourlyPriceUSD = 1.60;
+                break;
+              case 'a100.2x':
+                hourlyPriceUSD = 3.20;
+                break;
+              case 'a100.4x':
+                hourlyPriceUSD = 6.40;
+                break;
+              case 'a100.8x':
+                hourlyPriceUSD = 12.80;
+                break;
+      
+            case 'a100-80gb.2x':
+              hourlyPriceUSD = 3.62;
+              break;
+            case 'a100-80gb.4x':
+              hourlyPriceUSD = 7.24;
+              break;
+            case 'a100-80gb.8x':
+              hourlyPriceUSD = 14.48;
+              break;
+            case 'a100-80gb-sxm-ib.8x':
+              hourlyPriceUSD = 17.12;
               break;
             default:
               hourlyPriceUSD = 0;
@@ -52,7 +99,6 @@ function FilterGpusbyVram(props: any) {
             vCpuCount: item.cpu_cores,
             ramInGb: item.memory_gb,
             storageInGb: item.disk_gb,
-            monthlyPriceUSD: hourlyPriceUSD * 720,
             hourlyPriceUSD: hourlyPriceUSD,
             enabled: true,
             gpuEnabled: item.num_gpu > 0,
@@ -91,7 +137,7 @@ function FilterGpusbyVram(props: any) {
     setFilteredData(filteredData.map((item, i) => i === index ? { ...item, isChecked: true } : { ...item, isChecked: false }));
     setSelectedGpu(filteredData[index].planName);
   };
-  console.log(selectedGpu)
+
   const unavailableCounts = [3, 5, 6, 7];
 
   return (

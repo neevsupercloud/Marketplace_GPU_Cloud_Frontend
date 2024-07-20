@@ -69,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onToggleSidebar }) => {
       {/* Toggle button */}
       <div className="toggle-button-container">
         <button className="toggle-button" onClick={onToggleSidebar} style={{ marginTop: "14px" }}>
-          <FaBars size={20} style={{ color: 'white' }} />
+          <FaBars size={20} style={{ color: '#673ab7',marginTop:"-32px" }} />
         </button>
       </div>
       {/* Main navigation */}
