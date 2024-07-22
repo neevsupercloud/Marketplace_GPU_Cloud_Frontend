@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../../components/Spinner-loader';
+import { useStore } from '../../store';
 
 interface UsageItem {
   resource_type: string;
@@ -14,7 +15,9 @@ interface UsageItem {
 const Usage: React.FC = () => {
   const [data, setData] = useState<UsageItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const { price, setPrice } = useStore();
   const [error, setError] = useState<string | null>(null);
+  const [totalAmount, setTotalAmount] = useState<string>('0.00');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +37,7 @@ const Usage: React.FC = () => {
 
     fetchData();
   }, []);
+  console.log(price,"rufhrufb")
 
   const calculateAmount = (resourceType: string, quantity: number) => {
     let hourlyPriceUSD = 0;
@@ -107,8 +111,19 @@ const Usage: React.FC = () => {
         break;
     }
 
-    return (hourlyPriceUSD * quantity).toFixed(2);
+    const amount = hourlyPriceUSD * quantity;
+    console.log(`Calculated amount for resource type ${resourceType} and quantity ${quantity} is $${amount.toFixed(2)}`);
+    return amount;
   };
+
+  useEffect(() => {
+    if (data.length > 0) {
+      const total = data.reduce((acc, item) => acc + calculateAmount(item.resource_type, item.quantity), 0);
+      const totalAmountUSD = total.toFixed(2);
+      setTotalAmount(totalAmountUSD);
+      setPrice(parseFloat(totalAmountUSD)); // Convert to number before saving to the store
+    }
+  }, [data, setPrice]);
 
   if (loading) {
     return (
@@ -146,10 +161,14 @@ const Usage: React.FC = () => {
                 <td className="px-6 py-4 border-b border-gray-200">{item.date}</td>
                 <td className="px-6 py-4 border-b border-gray-200">{item.quantity}</td>
                 <td className="px-6 py-4 border-b border-gray-200">
-                  ${calculateAmount(item.resource_type, item.quantity)}
+                  ${calculateAmount(item.resource_type, item.quantity).toFixed(2)}
                 </td>
               </tr>
             ))}
+            <tr className="bg-white shadow-md rounded-lg mb-4">
+              <td colSpan={4} className="px-6 py-4 border-b border-gray-200 font-bold text-right">Total Amount (USD):</td>
+              <td className="px-6 py-4 border-b border-gray-200 font-bold">${totalAmount}</td>
+            </tr>
           </tbody>
         </table>
       </div>

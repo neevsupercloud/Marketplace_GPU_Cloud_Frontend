@@ -30,6 +30,7 @@ export type CustomCardProps = {
 type State = {
   selectedGpu: CustomCardProps | null;
   gpuName: string;
+  price: number;
   auth: string | null;
   loading: boolean;
   error: ReactNode;
@@ -83,6 +84,7 @@ type Actions = {
   setVmCount: (count: number) => void;
   setTotalCpu: (cpu: number) => void;
   setTotalStorage: (storage: number) => void;
+  setPrice: (price: number) => void;
   setTotalRam: (ram: number) => void;
   setImage: (img: string) => void;
   setSshPubKey: (key: string | null) => void;
@@ -94,6 +96,7 @@ export const useStore = create<State & Actions>((set) => ({
   selectedGpu: null,
   gpuName: "",
   auth: null,
+  price:0,
   volumes: null,
   allVms: null,
   allModels: null,
@@ -153,6 +156,7 @@ export const useStore = create<State & Actions>((set) => ({
   setSshPubKey: (key) => set(() => ({ ssh_pub_key: key })),
   setInstanceName: (name) => set(() => ({ InstanceName: name })),
   setOperationId: (operation_id) => set(() => ({ operation_id })), // Implement setOperationId action
+  setPrice: (name) => set(() => ({ price: name })),
 }));
 
 export function getAuthFromLocalStorage(): (TBasicAuth & { org: string }) | null {

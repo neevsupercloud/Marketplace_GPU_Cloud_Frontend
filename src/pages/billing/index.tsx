@@ -3,21 +3,23 @@ import React, { useState } from 'react';
 // import { NavLink } from 'react-router-dom';
 import Funds from './fund';
 import Usage from './Usage';
+// import billing from ''
 // import Cards from './billing/Cards';
 // import BillHistory from './billing/BillHistory';
 // import PromotionalCredits from './billing/PromotionalCredits';
 // import BillingAddress from './billing/BillingAddress';
 
 const navItems = [
-  { name: 'Funds', component: Funds },
   { name: 'Usage', component: Usage },
+  { name: 'Funds', component: Funds },
+  
   // { name: 'Bill History', component: BillHistory },
   // { name: 'Promotional Credits', component: PromotionalCredits },
   // { name: 'Billing Address', component: BillingAddress },
 ];
 
 const Billing: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('Funds');
+  const [activeTab, setActiveTab] = useState('Usage');
 
   const renderContent = () => {
     const activeItem = navItems.find(item => item.name === activeTab);
