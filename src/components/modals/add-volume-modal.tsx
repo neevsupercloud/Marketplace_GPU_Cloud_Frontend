@@ -20,7 +20,7 @@ interface Props {
 const MAX_SIZE = 2048;
 
 export default function AddVolumeModal({ onClose }: Props) {
-  const { auth } = useStore();
+  // const { auth } = useStore();
   const [form, setForm] = useState({ name: "", size: "" });
   const { project_slug } = useQuery();
   const { currOrg, setVolumes, volumes } = useStore();
