@@ -195,7 +195,7 @@ const ConfigureDeployment: React.FC<ConfigureDeploymentProps> = (props) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
+          // 'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
         },
         body: JSON.stringify(vmPayload),
       });

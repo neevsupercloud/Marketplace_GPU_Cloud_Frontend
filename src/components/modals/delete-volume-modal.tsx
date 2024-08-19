@@ -19,7 +19,7 @@ const DeleteVolumeModal: React.FC<DeleteVolumeModalProps> = ({ vol_name, onClose
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
+          // 'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
         },
       });
       if (response.ok) {
@@ -28,7 +28,7 @@ const DeleteVolumeModal: React.FC<DeleteVolumeModalProps> = ({ vol_name, onClose
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
+            // 'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
           },
         });
         const updatedData = await updatedResponse.json();

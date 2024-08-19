@@ -19,7 +19,7 @@ export default function DeleteVmModal({ onClose, vm_slug }: Props) {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
+          // 'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
         },
       });
       if (!response.ok) {
@@ -36,7 +36,7 @@ export default function DeleteVmModal({ onClose, vm_slug }: Props) {
   }
 
   return (
-    <div className="fixed z-50 left-0 top-0 w-screen h-screen bg-black/[.5] flex justify-center items-center">
+    <div className="fixed z-50 left-0 top-0 w-screen h-screen bg-black/[.5] backdrop-blur-sm flex justify-center items-center">
       <div className="container max-w-2xl rounded-lg bg-white shadow-lg">
         <div className="p-4 border-b border-slate-200 flex items-center justify-between">
           <p className="font-semibold text-black text-lg">Delete {vm_slug}</p>
@@ -51,7 +51,14 @@ export default function DeleteVmModal({ onClose, vm_slug }: Props) {
           </FormControl>
           <div className="w-full grid grid-cols-2 gap-x-2">
             <Button onClick={onClose}>Cancel</Button>
-            <Button colorScheme="red" isDisabled={confirmName !== vm_slug} onClick={() => terminateVm(vm_slug)}>Delete</Button>
+            <Button
+              isDisabled={confirmName !== vm_slug}
+              onClick={() => terminateVm(vm_slug)}
+              className="gradient-button"
+              style={{backgroundColor:"linear-gradient(to left, rgb(181, 44, 246), rgb(74, 145, 247));"}}
+            >
+              Delete
+            </Button>
           </div>
         </div>
       </div>

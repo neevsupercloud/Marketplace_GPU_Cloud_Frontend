@@ -36,7 +36,7 @@ export default function AddVolumeModal({ onClose }: Props) {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Authorization': `Bearer ${auth}`, // Pass the access token in the header
+        // 'Authorization': `Bearer ${auth}`, // Pass the access token in the header
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

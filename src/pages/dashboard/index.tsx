@@ -137,7 +137,7 @@ export default function Dashboards() {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
-            'Authorization': `Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl`,
+            // 'Authorization': `Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl`,
             'Content-Type': 'application/json',
           },
         });

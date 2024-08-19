@@ -5,7 +5,7 @@ import dollar from '../../asset/icons8-dollar-30.png';
 import Stripe from 'stripe';
 
 // Initialize Stripe
-const stripe = new Stripe('sk_test_51PdSN2RtSGFvExvinCKkuTPlbMSzebsO0YoadH50hUu65jgpdFojxDuAoAvXhKzBf2O8U61AvxXWpxYie4Tu8F7600afnkLzV9', {
+const stripe = new Stripe('sk_test_51LaHNDSDaCHyKtDmFDmrw9Rcyj9qrgOp8fXofjEIjRnTl9ij49nk3PfAm2qUBHouhNNPJCQjuK3EhEscpMJdYELo00U7qgfFH1', {
   apiVersion: '2024-06-20', // Replace with your desired Stripe API version
 });
 
@@ -22,7 +22,7 @@ function Fund() {
       const createdPrice = await stripe.prices.create({
         currency: 'usd',
         unit_amount: unitAmountCents, // Stripe expects amount in the smallest currency unit (e.g., cents for USD)
-        product: 'prod_QURL7g9YIwS3fY',
+        product: 'prod_QWMYCZrbzeJSeF',
       });
 
       console.log("createdPrice", createdPrice);
@@ -117,7 +117,7 @@ function Fund() {
           >
             Stripe
           </button>
-          <button
+          {/* <button
             style={{
               backgroundColor: '#f0f0f0',
               padding: '10px 20px',
@@ -126,7 +126,7 @@ function Fund() {
             }}
           >
             RazorPay
-          </button>
+          </button> */}
         </div>
         <div style={{ marginBottom: '20px' }}>
           <input type="radio" id="100USD" name="amount" value="100USD" style={{ marginRight: '10px' }} />

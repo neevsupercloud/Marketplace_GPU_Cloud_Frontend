@@ -33,7 +33,7 @@ export default function AddKeyModal({ onClose }: AddKeyModalProps) {
 
     const headers = {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${auth}`, // Pass the access token in the header
+      // 'Authorization': `Bearer ${auth}`, // Pass the access token in the header
       'Content-Type': 'application/json',
     };
 

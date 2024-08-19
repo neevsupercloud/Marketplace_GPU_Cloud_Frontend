@@ -38,7 +38,7 @@ export default function CustomizeDeploymentModal({onClose}: { onClose: () => voi
     setModalState("loading");
     const headers = {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${auth}`, // Pass the access token in the header
+      // 'Authorization': `Bearer ${auth}`, // Pass the access token in the header
       'Content-Type': 'application/json',
     };
     _get<GetVolumesResponse>(ENDPOINTS.getVolumes(currOrg, project_slug), headers)

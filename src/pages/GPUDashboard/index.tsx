@@ -315,7 +315,7 @@ export default function GPUDashboard() {
                       <h5 className='font-Inter font-[400] text-[12px] text-[#0D1115B8]/72'>{vm.disks && vm.disks.length > 0 ? vm.disks[0].size : 'No disks'} Storage</h5>
                     </div>
                   </td>
-                  <td className={`bg-white border-y border-[#0D11151A]/10 p-2 text-start ${STATUS_COLOR[vm.state]} font-[600] font-Inter text-[12px]`} style={{ width: "120px" }} onClick={() => { navigate(`/gpu-compute/about-instance/${vm.id}`); }}>
+                  <td className={`bg-white border-y border-[#0D11151A]/10 p-2 text-start ${STATUS_COLOR[vm.state]} font-[600] font-Inter text-[12px]`} style={{ width: "130px" }} onClick={() => { navigate(`/gpu-compute/about-instance/${vm.id}`); }}>
                     {renderStatus(vm.state)}
                   </td>
                   <td className="bg-white border-y border-[#0D11151A]/10 font-Inter text-start font-[400] text-[12px] text-[#0D1115B8]/72 py-2 px-4" onClick={() => { navigate(`/gpu-compute/about-instance/${vm.id}`); }}>{vm.location}</td>

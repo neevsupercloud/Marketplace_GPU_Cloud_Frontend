@@ -37,7 +37,7 @@ export default function AddVolume({ selectedLocation, onClose, onError }: AddVol
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
+            // 'Authorization': 'Bearer 4WC70c0pXKICy1AILVtQIBmxcP4KGl',
           },
           body: JSON.stringify(body),
         });
