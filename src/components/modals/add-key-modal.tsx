@@ -20,7 +20,7 @@ interface AddKeyModalProps {
 }
 
 export default function AddKeyModal({ onClose }: AddKeyModalProps) {
-  const { auth } = useStore();
+  //const { auth } = useStore();
   const [form, setForm] = useState({ name: "", key: "" });
   const { project_slug, _post, _get } = useQuery();
   const { currOrg, setSshKeys } = useStore();
